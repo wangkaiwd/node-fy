@@ -6,7 +6,7 @@
   "author": "wangkaiwd <1162486176@qq.com>",
   "license": "MIT",
   "scripts": {
-    "start": "tsnd src/main.ts"
+    "start": "tsnd src/cli.ts"
   },
   "devDependencies": {
     "@types/node": "^12.11.6",

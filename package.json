@@ -9,11 +9,13 @@
     "start": "tsnd src/cli.ts"
   },
   "devDependencies": {
+    "@types/md5": "^2.1.33",
     "@types/node": "^12.11.6",
     "ts-node-dev": "^1.0.0-pre.43",
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "commander": "^3.0.2"
+    "commander": "^3.0.2",
+    "md5": "^2.2.1"
   }
 }

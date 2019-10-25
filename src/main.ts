@@ -1,28 +1,28 @@
 import md5 = require('md5');
 import * as https from 'https';
+import * as querystring from 'querystring';
+import { appid, secretKey } from './privateKey';
 
 export const translate = (word: string) => {
-  console.log(word);
-  console.log(md5);
-
+  console.log('word', word);
+  // appid+q+salt+密钥 的MD5值
+  const salt = Math.random();
+  const sign = md5(appid + word + salt + secretKey);
+  const query = querystring.stringify({ appid, q: word, from: 'en', to: 'zh', salt, sign });
   const options = {
-    hostname: 'encrypted.google.com',
+    hostname: `fanyi-api.baidu.com`,
     port: 443,
-    path: '/',
+    path: `/api/trans/vip/translate?${query}`,
     method: 'GET'
   };
-
   const req = https.request(options, (res) => {
-    console.log('状态码:', res.statusCode);
-    console.log('请求头:', res.headers);
-
-    res.on('data', (d) => {
-      process.stdout.write(d);
+    res.on('data', (chunk) => {
+      process.stdout.write(chunk);
     });
   });
 
   req.on('error', (e) => {
-    console.error(e);
+    console.error('error', e);
   });
   req.end();
 };

@@ -9,8 +9,8 @@ interface TranslateResult {
   dst: string;
 }
 interface BaiduResult {
-  error_code: string;
-  error_msg: string;
+  error_code?: string;
+  error_msg?: string;
   form: string;
   to: string;
   trans_result: TranslateResult[]
@@ -34,7 +34,14 @@ export const translate = (word: string) => {
     });
     response.on('end', () => {
       const object: BaiduResult = JSON.parse(body);
-      console.log(object.trans_result[0].dst);
+      if (object.error_code) {
+        console.error(object.error_msg);
+        process.exit(1);
+      } else {
+        console.log(object.trans_result[0].dst);
+        // 0: 成功退出
+        process.exit(0);
+      }
     });
   });
 

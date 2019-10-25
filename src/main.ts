@@ -26,6 +26,7 @@ export const translate = (word: string) => {
     path: `/api/trans/vip/translate?${query}`,
     method: 'GET'
   };
+  // 这里遇到一个问题： 不进行chunk数据拼接，直接使用官方例子的时候看不到响应结果？
   const request = https.request(options, (response) => {
     let body = '';
     response.on('data', (chunk) => {

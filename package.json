@@ -6,7 +6,7 @@
     "fy": "dist/cli.js"
   },
   "files": [
-    "dist/*.js"
+    "dist/**/*.js"
   ],
   "repository": "git@github.com:wangkaiwd/node-fy.git",
   "author": "wangkaiwd <1162486176@qq.com>",

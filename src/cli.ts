@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { translate } from './main';
 
 const program = require('commander');

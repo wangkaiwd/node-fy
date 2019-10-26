@@ -1,7 +1,13 @@
 {
-  "name": "node-fy",
+  "name": "node-fy-110",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/main.js",
+  "bin": {
+    "fy": "dist/cli.js"
+  },
+  "files": [
+    "dist/*.js"
+  ],
   "repository": "git@github.com:wangkaiwd/node-fy.git",
   "author": "wangkaiwd <1162486176@qq.com>",
   "license": "MIT",

@@ -1,3 +1,5 @@
 .idea
 node_modules
 /src/privateKey.ts
+/dist
+yarn-error.log

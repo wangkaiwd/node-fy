@@ -1,7 +1,7 @@
 import * as https from 'https';
 import { errorMap } from './config';
 import { getRequestOptions } from './helper';
-// 把secretKey存放到一个单独的服务器，服务器将md5后的结果进行返回
+// 把secretKey存放到一个单独的服务器，服务器将md5后的结果进行返回(sign)
 
 interface TranslateResult {
   src: string;
@@ -28,7 +28,9 @@ export const translate = (word: string) => {
         console.error(errorMap[object.error_code] || object.error_msg);
         process.exit(1);
       } else {
-        console.log(object.trans_result[0].dst);
+        // console.log(object.trans_result[0].dst);
+        const results = object.trans_result.map(item => item.dst);
+        console.log(results.join('; '));
         // 0: 成功退出
         process.exit(0);
       }
